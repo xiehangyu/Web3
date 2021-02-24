@@ -12,4 +12,4 @@ In this procedure, -1 represents no record
 
 **TODO**
 
-利用矩阵对测试集合进行预测
+- 利用矩阵对测试集合进行预测
