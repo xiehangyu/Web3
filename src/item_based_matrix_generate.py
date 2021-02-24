@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class ItemBased:
     def __init__(self, k = 10):
         self.dataDir = '../testingdata/'
@@ -8,9 +7,9 @@ class ItemBased:
 
     # Read data from files.
     def readData(self):
-        self.normalizedMatrix = np.load(self.dataDir + 'Normalized_matrix.npy')
+        self.normalizedMatrix = np.load(self.dataDir + 'Normalized_matrix.npy', allow_pickle=True)
         self.originalMatrix = np.load(
-            self.dataDir + 'Original_score_matrix.npy')
+            self.dataDir + 'Original_score_matrix.npy', allow_pickle=True)
         self.movieCount, self.userCount = self.normalizedMatrix.shape
         print("Total Movie(s): {0}.\nTotal User(s): {1}.".format(self.movieCount, self.userCount))
 
