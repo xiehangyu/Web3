@@ -2,7 +2,7 @@ import numpy as np
 
 class ItemBased:
     def __init__(self, k = 10):
-        self.dataDir = '../testingdata/'
+        self.dataDir = '../data/'
         self.K = k
 
     # Read data from files.
