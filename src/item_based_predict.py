@@ -3,9 +3,9 @@ import numpy as np
 
 class ItemBased:
     def __init__(self, k=10):
-        self.dataDir = '../data/'
+        self.dataDir = '../testingdata/'
         self.K = k
-        self.testDataPath = '../data/testing.dat'
+        self.testDataPath = '../testingdata/testing.dat'
 
     # Read data from files.
     def readData(self):
