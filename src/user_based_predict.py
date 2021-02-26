@@ -93,8 +93,8 @@ class UserBased:
             if movieIdx == -1:
                 predGrade = 3  # Or maybe random value for this
                 result.append(index, predGrade)
-                print("(User, Movie): ({0}, {1}). Result: {2}".format(
-                    movieIdx, userIdx, predGrade))
+                # print("(User, Movie): ({0}, {1}). Result: {2}".format(
+                #     movieIdx, userIdx, predGrade))
                 continue
 
             if movieIdx != lastMovieIdx:
@@ -128,8 +128,8 @@ class UserBased:
             if np.dot(self.normalizedMatrix[movieIdx], self.normalizedMatrix[movieIdx]) == 0:
                 predGrade = int(round(mean))
                 result.append((index, predGrade))
-                print("(User, Movie): ({0}, {1}). Result: {2}".format(
-                    movieIdx, userIdx, predGrade))
+                # print("(User, Movie): ({0}, {1}). Result: {2}".format(
+                #     movieIdx, userIdx, predGrade))
                 continue
 
             if self.originalMatrix[movieIdx][userIdx] == -1:
@@ -149,17 +149,25 @@ class UserBased:
                         simSum += simVec[neighbor]
                         predGrade += simVec[neighbor] * (
                             self.originalMatrix[neighbor][userIdx] - self.userMean[neighbor])
-                    predGrade /= simSum
-                    predGrade += mean
+                    if simSum == 0:
+                        predGrade = mean
+                    else:
+                        predGrade /= simSum
+                        predGrade += mean
                 else:
                     predGrade = mean
+                # print(mean, predGrade, simSum)
                 predGrade = int(round(predGrade))
+                if predGrade > 5:
+                    predGrade = 5
+                if predGrade < 0:
+                    predGrade = 0
 
             else:
                 predGrade = self.originalMatrix[movieIdx][userIdx]
 
-            print("(User, Movie): ({0}, {1}). Result: {2}".format(
-                movieIdx, userIdx, predGrade))
+            # print("(User, Movie): ({0}, {1}). Result: {2}".format(
+            #     movieIdx, userIdx, predGrade))
             result.append((index, predGrade))
 
         return sorted(result)

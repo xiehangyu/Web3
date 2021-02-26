@@ -192,4 +192,4 @@ def similarity (a, b):
 
 if __name__ == "__main__":
     preprocessor = based_on_custom()
-    preprocessor.Initialize_with_dict()
+    preprocessor.General_Initialization()
