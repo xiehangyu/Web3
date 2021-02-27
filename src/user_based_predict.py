@@ -210,7 +210,7 @@ if __name__ == '__main__':
     parser.add_argument('--relation', action="store_true",
                         required=False, help="specify whether to use relation or not")
     args = parser.parse_args()
-    if 'k' in args:
+    if 'k' not in args:
         recommender = UserBased(useRelation=args.relation)
     else:
         recommender = UserBased(args.k, args.relation)
